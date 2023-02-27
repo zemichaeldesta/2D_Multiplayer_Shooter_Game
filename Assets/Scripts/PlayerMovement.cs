@@ -8,8 +8,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private float direction1=0f;
+    
     private SpriteRenderer sprite;
+
+    private float direction1 = 0f;
+    [SerializeField]private float moveSpeed = 7f; //so we can easily change the value
+    [SerializeField] private float jumpForce = 14f;
 
     // Start is called before the first frame update
     private void Start()
@@ -28,23 +32,23 @@ public class PlayerMovement : MonoBehaviour
         //it moves the character in the y axis.
         //GetAxisRaw makes the character move horizontal and the character stops imediatly when you leave the button
         direction1 = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(direction1 * 7f, rb.velocity.y);
+        rb.velocity = new Vector2(direction1 * moveSpeed, rb.velocity.y);
 
 
         //this code selectes space button to make the player jump.
         if (Input.GetButtonDown("Jump"))
         {
             //this code makes the character move up and down in the x axis.
-            rb.velocity = new Vector2(rb.velocity.x, 10f);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
         }
 
-        UpdateAnimationUpdate();
+        UpdateAnimationState();
 
 
 
     }
-    private void UpdateAnimationUpdate()
+    private void UpdateAnimationState ()
     {
         if (direction1 > 0f) //this statement checks if the player is running or not
         {
