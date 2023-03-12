@@ -2,14 +2,17 @@
 //feb 26 2023
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D rb; 
+    private BoxCollider2D coll;
     private Animator anim;
-    
     private SpriteRenderer sprite;
+
+    [SerializeField] private LayerMask jumpableGround;
 
     private float direction1 = 0f;
     [SerializeField]private float moveSpeed = 7f; //so we can easily change the value
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //this code states the Rigidbody, sprite and animator so we can use it in our class
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
@@ -38,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         //this code selectes space button to make the player jump.
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")&&IsGrounded())
         {
             //this code makes the character move up and down in the x axis.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -76,5 +80,9 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.falling;
         }
         anim.SetInteger("state", (int)state);
+    }
+    private bool IsGrounded()
+    {
+        return  Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }
