@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using static System.Net.Mime.MediaTypeNames;
 
 public class ItemCollector : MonoBehaviour
 {
-    //private int cherries = 0; //counter variables
+    public int cherries = 0; //counter variables
+    [SerializeField] private TMP_Text cherriesText;
     private void OnTriggerEnter2D(Collider2D collision)// I used this instead of on collision because previously set
                                                        // it to on trigger so the player dont bump into the collectable
     {
@@ -14,8 +18,8 @@ public class ItemCollector : MonoBehaviour
         {
             
             Destroy(collision.gameObject); //destroys the object after the player collides with the item
-            //cherries++;
-           // Debug.Log("Cherries:" + cherries);
+            cherries++;
+            cherriesText.text="Cherries: "+ cherries;
         }
     }
 
