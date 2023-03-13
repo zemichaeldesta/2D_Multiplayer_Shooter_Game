@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
     private Animator anim;
-
+    private Rigidbody2D rb;
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
     }
@@ -20,7 +22,12 @@ public class PlayerLife : MonoBehaviour
     }
     private void Die()
     {
+        rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");// this triggers the animation death
+    }
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);//reloads the level
     }
 
 }
