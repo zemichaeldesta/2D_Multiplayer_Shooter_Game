@@ -19,7 +19,7 @@ public class ItemCollector : MonoBehaviour
             
             Destroy(collision.gameObject); //destroys the object after the player collides with the item
             cherries++;
-            cherriesText.text="Cherries: "+ cherries;
+            cherriesText.text="Cherries: "+ cherries/3;
         }
     }
 
