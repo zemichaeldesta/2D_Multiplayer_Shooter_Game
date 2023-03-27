@@ -27,7 +27,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap")&&cherries<3) // this checks if the item is a trap or not
         {
             Die();
-            cherriesText.text = "Cherries: " + cherries / 3;
+            cherriesText.text = "Life: " + cherries / 3;
 
             //if the item is  a trap and the player has less than 3 cherries it calls the method die
         }
@@ -35,7 +35,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap") && cherries > 3) // this checks if the item is a trap or not
         {
             cherries -= 3;
-            cherriesText.text = "Cherries: " + cherries / 3;
+            cherriesText.text = "Life: " + cherries / 3;
             //if the item is  a trap and the player has less than 3 cherries it calls the method die
         }
     }
@@ -52,7 +52,7 @@ public class PlayerLife : MonoBehaviour
 
             Destroy(collision.gameObject); //destroys the cherry object after the player collides with the item
             cherries++; //adds to the player's number of cherries
-            cherriesText.text = "Cherries: " + cherries / 3;
+            cherriesText.text = "Life: " + cherries / 3;
 
         }
         if (collision.gameObject.CompareTag("FinishLine")) // this checks if the item is a trap or not
