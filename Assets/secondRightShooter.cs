@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class shooting : MonoBehaviour
+public class secondRightShooter : flip
 {
     public Transform shootingPoint;
     public GameObject bulletPrefab;
@@ -11,12 +12,13 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
         }
     }
+
 }
 
 

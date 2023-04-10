@@ -7,6 +7,7 @@ TagManager:
   - Cherry
   - Trap
   - FinishLine
+  - Bullet
   layers:
   - Default
   - TransparentFX

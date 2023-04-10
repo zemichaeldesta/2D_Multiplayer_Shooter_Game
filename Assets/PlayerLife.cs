@@ -11,8 +11,10 @@ public class PlayerLife : MonoBehaviour
     
     private Animator anim;
     private Rigidbody2D rb;
-    public int cherries;
-    
+   // public int cherries;
+    public UnityEngine.UI.Image healthBar;
+    public float healthAmount = 100f;
+
     [SerializeField] private TMP_Text cherriesText;
     private void Start()
     {
@@ -20,24 +22,42 @@ public class PlayerLife : MonoBehaviour
         anim = GetComponent<Animator>();
 
     }
+    public void TakeDamage(float damage)
+    {
+        healthAmount -= damage;
+        healthBar.fillAmount = healthAmount / 100f;
+    }
+    public void Heal(float healingAmount)
+    {
+        healthAmount += healingAmount;
+        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+
+        healthBar.fillAmount = healthAmount / 100f;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
         
-        if (collision.gameObject.CompareTag("Trap")&&cherries<3) // this checks if the item is a trap or not
+        if (collision.gameObject.CompareTag("Trap")) // this checks if the item is a trap or not
         {
-            Die();
-            cherriesText.text = "Life: " + cherries / 3;
+           
+            TakeDamage(20);
+            
+            if (healthAmount <= 0)
+            {
+                Die();
+
+            }
 
             //if the item is  a trap and the player has less than 3 cherries it calls the method die
         }
 
-        if (collision.gameObject.CompareTag("Trap") && cherries > 3) // this checks if the item is a trap or not
+       /* if (collision.gameObject.CompareTag("Trap") && cherries > 3) // this checks if the item is a trap or not
         {
             cherries -= 3;
             cherriesText.text = "Life: " + cherries / 3;
             //if the item is  a trap and the player has less than 3 cherries it calls the method die
-        }
+        } */
     }
     private void Die()
     {
@@ -51,8 +71,10 @@ public class PlayerLife : MonoBehaviour
         {
 
             Destroy(collision.gameObject); //destroys the cherry object after the player collides with the item
-            cherries++; //adds to the player's number of cherries
-            cherriesText.text = "Life: " + cherries / 3;
+           // cherries++; //adds to the player's number of cherries
+            //cherriesText.text = "Life: " + cherries / 3;
+            Heal(20);
+
 
         }
         if (collision.gameObject.CompareTag("FinishLine")) // this checks if the item is a trap or not
