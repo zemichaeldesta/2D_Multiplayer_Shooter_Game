@@ -41,7 +41,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap")) // this checks if the item is a trap or not
         {
            
-            TakeDamage(20);
+            TakeDamage(5);
             
             if (healthAmount <= 0)
             {

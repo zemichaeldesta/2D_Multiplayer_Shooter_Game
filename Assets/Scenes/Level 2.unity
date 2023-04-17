@@ -47923,7 +47923,7 @@ GameObject:
   - component: {fileID: 1920371971}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47941,7 +47941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1993731850}
-  healthAmount: 100
+  healthAmount: 50
   cherriesText: {fileID: 1747212723}
 --- !u!114 &1920371961
 MonoBehaviour:
@@ -48084,7 +48084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920371958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.99, y: 2.15, z: 0}
+  m_LocalPosition: {x: 6.53, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48266,7 +48266,7 @@ GameObject:
   - component: {fileID: 1954480850}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: FinishLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
