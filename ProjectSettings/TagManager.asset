@@ -8,6 +8,7 @@ TagManager:
   - Trap
   - FinishLine
   - Bullet
+  - player
   layers:
   - Default
   - TransparentFX
