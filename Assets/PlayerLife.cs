@@ -6,9 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 using static System.Net.Mime.MediaTypeNames;
 
+
 public class PlayerLife : MonoBehaviour
 {
-    
+    [SerializeField] private AudioSource DeathEffect;
     private Animator anim;
     private Rigidbody2D rb;
    // public int cherries;
@@ -61,8 +62,10 @@ public class PlayerLife : MonoBehaviour
     }
     private void Die()
     {
+        DeathEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");// this triggers the animation death
+        DeathEffect.Play();
     }
     private void OnTriggerEnter2D(Collider2D collision)// I used this instead of on collision because previously set
                                                        // it to on trigger so the player dont bump into the collectable

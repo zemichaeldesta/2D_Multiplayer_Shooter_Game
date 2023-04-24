@@ -10,13 +10,16 @@ using static System.Net.Mime.MediaTypeNames;
 public class ItemCollector : MonoBehaviour
 {
     public int cherries = 0; //counter variables
+    [SerializeField] private AudioSource CollectionEffect;
     [SerializeField] private TMP_Text cherriesText;
     private void OnTriggerEnter2D(Collider2D collision)// I used this instead of on collision because previously set
                                                        // it to on trigger so the player dont bump into the collectable
     {
         if (collision.gameObject.CompareTag("Cherry"))//checking which item we are colliding with
         {
-            
+            CollectionEffect.Play();
+
+
             Destroy(collision.gameObject); //destroys the object after the player collides with the item
             cherries++;
             cherriesText.text="Cherries: "+ cherries/3;

@@ -8,7 +8,7 @@ public class rightShooter : flip
 {
     public Transform shootingPoint;
     public GameObject bulletPrefab;
-
+    [SerializeField] private AudioSource shootingSoundEffect;
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +16,8 @@ public class rightShooter : flip
         {
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+            shootingSoundEffect.Play();
+
         }
     }
 

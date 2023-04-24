@@ -12,7 +12,7 @@ public class secondPlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private Animator anim;
     private SpriteRenderer sprite;
-
+    [SerializeField] private AudioSource jumpSoundEffect;
     [SerializeField] private LayerMask jumpableGround;
 
     private float direction1 = 0f;
@@ -57,7 +57,7 @@ public class secondPlayerMovement : MonoBehaviour
         {
             //this code makes the character move up and down in the x axis.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
+            jumpSoundEffect.Play();
         }
         if (!(Input.anyKey))
         {

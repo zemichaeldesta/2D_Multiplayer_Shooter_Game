@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float direction1 = 0f;
     [SerializeField]private float moveSpeed = 7f; //so we can easily change the value
     [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     private enum MovementState { idle,running,jumping,falling } //one data type for different mutually exclusive events
     
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         //this code selectes space button to make the player jump.
         if (Input.GetButtonDown("Jump")&&IsGrounded())
         {
+            jumpSoundEffect.Play();
             //this code makes the character move up and down in the x axis.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
